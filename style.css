@@ -65,19 +65,17 @@ form .username{
     transition: .5s;
 }
 
-.username input:focus ~ label,
-.username input:focus ~ label{
+.username input:focus ~ label {
     top: -5px;
     color: #6C3483;
 }
 
-.username input:focus ~ span::before,
-.username input:focus ~ span::before{
+.username input:focus ~ span::before {
     width: 100%;
 }
 
 .recordar{
-    margin: -5px 0 20px 5px;
+    margin:-5px 0 20px 5px;
     color:blue;
     cursor:pointer;
 }
@@ -86,7 +84,7 @@ form .username{
     text-decoration: underline;
 }
 
-input [type="submit"]{
+input[type="submit"]{
     width: 100%;
     height: 50px;
     border: 1px solid;
@@ -98,7 +96,7 @@ input [type="submit"]{
     outline: none;
 }
 
-input [type="submit"]:hover{
+input[type="submit"]:hover{
     border-color: purple;
     transition:.5s;
 }
