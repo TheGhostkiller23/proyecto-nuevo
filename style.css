@@ -116,3 +116,11 @@ input[type="submit"]:hover{
 .registrarse a:hover{
     text-decoration: underline;
 }
+
+.warnings{
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    color: #B06AB3;
+    padding-top: 20px;
+}
