@@ -32,14 +32,33 @@ form.addEventListener("submit", e=>{
 
 [
 }   {
-    "usuario": "usuario nuevo",
-    "email": "emailnuevo@gmail.com",
-    "contraseña": "nuevacontraseña",
-    },
-
-    {
-        "usuario": "keiver",
-        "email": "keivergalvan66@gmail.com",
-        "contraseña": "123456"
-    }
+    const usuario = [
+          {
+            "nombre de usuario": "keiver",
+            "email": "keivergalvan66@gmail.com",
+            "contraseña": "123",
+            },
+        
+            {
+                "usuario": "keiver",
+                "email": "keiver@gmail.com",
+                "contraseña": "123456",
+            },
 ]
+
+        console.log(typeof usuario);
+
+        const jsonData = JSON.parse(usuario);
+        console.log(typeof jsonData);
+
+
+
+        const usuario = jsonData.filter(
+            (usuario) =>keiver > keiver@gmail.coom < 123
+        );
+
+        console.log(usuario);
+
+
+        const usuario = JSON.stringify(usuario); 
+        console.log(typeof usuario);
