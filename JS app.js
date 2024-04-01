@@ -29,3 +29,17 @@ form.addEventListener("submit", e=>{
         parrafo.innerHTML = "Enviado"
     }
 })
+
+[
+}   {
+    "usuario": "usuario nuevo",
+    "email": "emailnuevo@gmail.com",
+    "contraseña": "nuevacontraseña",
+    },
+
+    {
+        "usuario": "keiver",
+        "email": "keivergalvan66@gmail.com",
+        "contraseña": "123456"
+    }
+]
