@@ -30,35 +30,51 @@ form.addEventListener("submit", e=>{
     }
 })
 
-[
-}   {
-    const usuario = [
-          {
-            "nombre de usuario": "keiver",
-            "email": "keivergalvan66@gmail.com",
-            "contraseña": "123",
-            },
-        
-            {
-                "usuario": "keiver",
-                "email": "keiver@gmail.com",
-                "contraseña": "123456",
-            },
-]
+    //guardar_localStorage();
 
-        console.log(typeof usuario);
-
-        const jsonData = JSON.parse(usuario);
-        console.log(typeof jsonData);
+obtener_localstrorage();
 
 
-
-        const usuario = jsonData.filter(
-            (usuario) =>keiver > keiver@gmail.coom < 123
-        );
-
-        console.log(usuario);
+function obtener_localstrorage(){
 
 
-        const usuario = JSON.stringify(usuario); 
-        console.log(typeof usuario);
+    if( localStorage.getItem("nombre ") ){ 
+
+    // se que existe el nombre en el localstrorage
+    let nombre = localStorage.getItem("nombre");
+    let persona = JSON.parse( localStorage.getItem("persona") );
+
+
+    console.log( nombre );
+    console.log( persona );
+
+    }else{
+        console.log("no hay entradas en el local strorage");
+    }
+
+
+
+}
+
+
+        function guardar_localStorage(){
+
+        let persona = {
+            nombre: "keiver",
+            nombre del usuario: "keiver",
+            edad: 31,
+            email: "keiver@gmail.com",
+            contraseña: "1234",
+            recordar: "123";
+            coords: {
+                lat:10,
+                lng: -10,
+            } 
+        };
+
+        let nombre = "pedro";
+
+        localStorage.setItem( "nombre",  nombre);
+        localStorage.setItem("persona", JSON.stringify ( persona);
+    
+    }} }
