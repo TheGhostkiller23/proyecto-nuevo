@@ -45,13 +45,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 const userData = JSON.parse(storedUserData);
                 if (userData.password === passwordInput.value) {
                     console.log('Inicio de sesión exitoso');
+                    // Almacena los datos del usuario en localStorage para su uso en el dashboard
+                    localStorage.setItem('loggedInUser', JSON.stringify(userData));
                     // Redirige al usuario a la página principal
                     window.location.href = 'Dashboard/index.html';
                 } else {
                     console.log('Contraseña incorrecta');
+                    warningsElement.innerHTML = 'Contraseña incorrecta.';
                 }
             } else {
                 console.log('Usuario no registrado');
+                warningsElement.innerHTML = 'Usuario no registrado.';
             }
         }
     });

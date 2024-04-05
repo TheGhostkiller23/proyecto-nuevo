@@ -1,0 +1,15 @@
+/* style.css */
+
+#welcomeMessage {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    color: #4CAF50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    background-color: #F0F8FF;
+    margin: 20px auto;
+    width: 50%;
+    text-align: center;
+}
