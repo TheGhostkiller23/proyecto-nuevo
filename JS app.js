@@ -1,80 +1,84 @@
-const nombre = document.getElementById("name")
-const email = document.getElementById("email")
-const pass = document.getElementById("password")
-const form = document.getElementById("form")
-const parrafo = document.getElementById("warnings")
+document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('loginForm');
+    const registrarseLink = document.getElementById('registrarseLink');
+    const usernameInput = document.getElementById('username');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const warningsElement = document.getElementById('warnings');
 
-form.addEventListener("submit", e=>{
-    e.preventDefault()
-    let warnings = ""
-    let entrar = false
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/
-    parrafo.innerHTML = ""
-    if(nombre.value.length <6){
-        warnings += ´El nombre no es valido <br>´
-        entrar = true
-    }
-    if(!regexEmail.test(email.value)){
-        warnings += ´El email no es valido <br>´
-        entrar = true
-    }
-    if(pass.value.length < 8){
-        warnings += ´La contraseña no es valida <br>´
-        entrar = true
+    // Función para validar el nombre de usuario
+    function validarNombreUsuario() {
+        if (usernameInput.value.length < 6) {
+            warningsElement.innerHTML = 'El nombre de usuario debe tener al menos 6 caracteres.';
+            return false;
+        }
+        return true;
     }
 
-    if(entrar){
-        parrafo.innerHTML = warnings
-    }else{
-        parrafo.innerHTML = "Enviado"
-    }
-})
-
-    //guardar_localStorage();
-
-obtener_localstrorage();
-
-
-function obtener_localstrorage(){
-
-
-    if( localStorage.getItem("nombre ") ){ 
-
-    // se que existe el nombre en el localstrorage
-    let nombre = localStorage.getItem("nombre");
-    let persona = JSON.parse( localStorage.getItem("persona") );
-
-
-    console.log( nombre );
-    console.log( persona );
-
-    }else{
-        console.log("no hay entradas en el local strorage");
+    // Función para validar el correo electrónico
+    function validarEmail() {
+        let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+        if (!emailRegex.test(emailInput.value)) {
+            warningsElement.innerHTML = 'El email no es válido.';
+            return false;
+        }
+        return true;
     }
 
+    // Función para validar la contraseña
+    function validarContraseña() {
+        if (passwordInput.value.length < 8) {
+            warningsElement.innerHTML = 'La contraseña debe tener al menos 8 caracteres.';
+            return false;
+        }
+        return true;
+    }
 
+    // Controlador de eventos para el formulario de inicio de sesión
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Previene el envío del formulario por defecto
 
-}
+        if (validarNombreUsuario() && validarEmail() && validarContraseña()) {
+            // Aquí puedes verificar si el usuario existe en localStorage
+            const storedUserData = localStorage.getItem(usernameInput.value);
+            if (storedUserData) {
+                const userData = JSON.parse(storedUserData);
+                if (userData.password === passwordInput.value) {
+                    console.log('Inicio de sesión exitoso');
+                    // Almacena los datos del usuario en localStorage para su uso en el dashboard
+                    localStorage.setItem('loggedInUser', JSON.stringify(userData));
+                    // Redirige al usuario a la página principal
+                    window.location.href = 'Dashboard/index.html';
+                } else {
+                    console.log('Contraseña incorrecta');
+                    warningsElement.innerHTML = 'Contraseña incorrecta.';
+                }
+            } else {
+                console.log('Usuario no registrado');
+                warningsElement.innerHTML = 'Usuario no registrado.';
+            }
+        }
+    });
 
+    // Controlador de eventos para el enlace de registro
+    registrarseLink.addEventListener('click', function(e) {
+        e.preventDefault(); // Previene la acción por defecto del enlace
 
-        function guardar_localStorage(){
-
-        let persona = {
-            nombre: "keiver",
-            nombre del usuario: "keiver",
-            edad: 31,
-            email: "keiver@gmail.com",
-            contraseña: "1234",
-            recordar: "123";
-            coords: {
-                lat:10,
-                lng: -10,
-            } 
-        };
-
-        let nombre = "pedro";
-
-        localStorage.setItem( "nombre",  nombre);
-        localStorage.setItem("persona", JSON.stringify ( persona);
-    
-    }} }
+        if (validarNombreUsuario() && validarEmail() && validarContraseña()) {
+            // Si todo está correcto, guarda el objeto en localStorage
+            const userData = {
+                username: usernameInput.value,
+                email: emailInput.value,
+                password: passwordInput.value
+            };
+            localStorage.setItem(usernameInput.value, JSON.stringify(userData));
+            console.log('Datos guardados en localStorage');
+            // Muestra un mensaje de éxito
+            warningsElement.innerHTML = 'Registro exitoso. Ahora puedes iniciar sesión.';
+            // Limpiar los campos del formulario después del registro
+            usernameInput.value = '';
+            emailInput.value = '';
+            passwordInput.value = '';
+        }
+    });
+});
