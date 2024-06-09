@@ -1,4 +1,7 @@
 /* style.css */
+body {
+    background-color: rgb(236, 66, 231);
+}
 
 #welcomeMessage {
     font-family: 'Arial', sans-serif;
@@ -13,3 +16,6 @@
     width: 50%;
     text-align: center;
 }
+
+
+
